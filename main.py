@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen
-import random
+import random, math as Math
 
 screen = Screen()
 # screen.colormode(255)
@@ -8,11 +8,11 @@ timmy = Turtle()
 timmy.speed("fastest")
 timmy.hideturtle()
 
-def make_circle():
-    timmy.circle(100)
+def make_circle(width):
+    timmy.circle(width)
     
-def change_tilt():
-    timmy.left(5)
+def change_tilt(tilt):
+    timmy.left(tilt)
 
 def change_color():
     R = random.random()
@@ -20,12 +20,12 @@ def change_color():
     B = random.random()
     timmy.color(R, G, B)
 
-def circle_spiro():
-    for _ in range(72):
+def circle_spiro(width, tilt):
+    for _ in range(Math.ceil(360/tilt)):
         change_color()
-        make_circle()
-        change_tilt()
+        make_circle(width)
+        change_tilt(tilt)
     screen.exitonclick()
     
 
-circle_spiro()
+circle_spiro(150, 0.5)
